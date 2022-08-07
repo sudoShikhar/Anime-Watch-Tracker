@@ -1,6 +1,12 @@
-<h1>Signup template.</h1>
+{% extends 'base.html' %} 
+{% block content %}
+<h1>Signup</h1>
 
 <form method="post">
   {% csrf_token %} {{ form }}
+  <p>
+    Already have an account? Log in <a href="/watchTracker/login">Here</a>!!!
+  </p>
   <button type="submit">Sign Up</button>
 </form>
+{% endblock %}

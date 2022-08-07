@@ -1,6 +1,9 @@
+{% extends 'base.html' %} 
+{% block content %}
 <h1>Add new anime to WatchTracker</h1>
 
 <form method="post">
   {% csrf_token %} {{ form }}
   <button type="submit">Add Anime</button>
 </form>
+{% endblock %}
