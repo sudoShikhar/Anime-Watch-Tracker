@@ -1,0 +1,6 @@
+<h1>WatchTracker Home</h1>
+{% if user.is_authenticated %}
+<p>Logged in as {{ user.username }}</p>
+{% else %}
+<p>Not logged in as any user.</p>
+{% endif %}

@@ -18,5 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("watchTracker/", include('WatchTracker.urls'))
+    path("watchTracker/", include('WatchTracker.urls')),
+    path("watchTracker/", include('django.contrib.auth.urls')),
 ]
