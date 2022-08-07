@@ -1,6 +1,16 @@
 <h1>WatchTracker Home</h1>
 {% if user.is_authenticated %}
 <p>Logged in as {{ user.username }}</p>
-{% else %}
+{% for ani in anime%}
+<p>{{ ani }}</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" name="delete-post-id" value="{{ani.id}}">
+    Delete tracking.
+  </button>
+</form>
+{% empty %}
+<p>Not tracking any anime for now.</p>
+{% endfor %} {% else %}
 <p>Not logged in as any user.</p>
 {% endif %}

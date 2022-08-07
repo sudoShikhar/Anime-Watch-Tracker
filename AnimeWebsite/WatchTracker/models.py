@@ -23,16 +23,16 @@ class AnimeTrack(models.Model):
     )
     added_on = models.DateTimeField(auto_now_add=True)
 
-    def __repr__(self):
+    def __str__(self):
         return (
             self.title
             + " added by "
-            + self.user
+            + self.user.username
             + " on "
-            + self.added_on
+            + str(self.added_on.strftime("%c"))
             + ". Watched "
-            + self.watched
+            + str(self.watched)
             + "/"
-            + self.episode_count
+            + str(self.episode_count)
             + "."
         )
