@@ -1,4 +1,5 @@
 import os
+
 """
 Django settings for AnimeWebsite project.
 
@@ -56,7 +57,7 @@ ROOT_URLCONF = "AnimeWebsite.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, 'templates')],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -124,5 +125,5 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = '/watchTracker/'
-LOGOUT_REDIRECT_URL = '/watchTracker/login'
+LOGIN_REDIRECT_URL = "/watchTracker/"
+LOGOUT_REDIRECT_URL = "/watchTracker/login"
