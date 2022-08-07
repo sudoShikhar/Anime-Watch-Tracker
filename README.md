@@ -10,11 +10,11 @@ https://www.youtube.com/watch?v=WuyKxdLcw3w
    Deactivate: deactivate
 
 2. Login page
-   if already logged in redirect to home
+   if already logged in redirect to home (https://www.delftstack.com/howto/django/django-check-logged-in-user/#:~:text=Check%20the%20Logged%20in%20User%20in%20Views%20in%20Django,-In%20views%2C%20we&text=We%20can%20use%20request.,in%2C%20it%20will%20return%20True%20.)
    dont have account? sign up (with link)
 
 3. Signup page
-   if already logged in redirect to home
+   if already logged in redirect to home (https://www.delftstack.com/howto/django/django-check-logged-in-user/#:~:text=Check%20the%20Logged%20in%20User%20in%20Views%20in%20Django,-In%20views%2C%20we&text=We%20can%20use%20request.,in%2C%20it%20will%20return%20True%20.)
    already have account? login (with link)
    it should prompt on page with errors
 
