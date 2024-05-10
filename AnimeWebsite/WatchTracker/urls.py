@@ -7,7 +7,7 @@ from . import views
 
 
 urlpatterns = [
-    path("home/", views.home, name="WatchTracker Home"),
+    path("", views.home, name="WatchTracker Home"),
     path(
         'login/',
         auth_views.LoginView.as_view(

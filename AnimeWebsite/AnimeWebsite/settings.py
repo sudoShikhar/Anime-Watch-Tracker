@@ -125,6 +125,5 @@ STATIC_URL = "/static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_URL = "/watchTracker/login"
-LOGIN_REDIRECT_URL = "/watchTracker/home"
-LOGOUT_REDIRECT_URL = "/watchTracker/home"
+LOGIN_URL = "WatchTracker Login"
+LOGIN_REDIRECT_URL = LOGOUT_REDIRECT_URL = "WatchTracker Home"
