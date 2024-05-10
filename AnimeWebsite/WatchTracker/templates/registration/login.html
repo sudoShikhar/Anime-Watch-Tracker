@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <h1>Login</h1>
 <br />
+{% include 'registration/error.html' %}
 <form method="post" style="margin:auto">
   {% csrf_token %} {% for field in form %}
   <label class="form-label fs-3" for="{{ field.auto_id }}">{{ field.label }}:</label>
