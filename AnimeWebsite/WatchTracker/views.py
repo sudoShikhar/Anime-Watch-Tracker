@@ -54,9 +54,6 @@ def sign_up(request):
             login(request, user)
             return redirect(reverse("WatchTracker Home"))
         else:
-            print("Invalid form")
-            return redirect(reverse("Sign Up"))
+            return render(request, "registration/sign_up.html", {"form": form})
     else:
-        return render(
-            request, "registration/sign_up.html", {"form": RegistrationForm()}
-        )
+        return render( request, "registration/sign_up.html", {"form": RegistrationForm()})
