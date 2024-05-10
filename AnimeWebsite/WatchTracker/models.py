@@ -23,6 +23,12 @@ class AnimeTrack(models.Model):
     )
     added_on = models.DateTimeField(auto_now_add=True)
 
+    def watched_count(self):
+        return f"Watched {self.watched} out of {self.episode_count} episodes."
+
+    def watched_count_percentage(self):
+        return self.watched * 100 / self.episode_count
+
     def __str__(self):
         return (
             self.title

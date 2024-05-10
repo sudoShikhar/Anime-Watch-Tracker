@@ -1,10 +1,12 @@
-{% extends 'base.html' %} 
-{% load crispy_forms_tags %}
-{% block content %}
-<h1>Add new anime to WatchTracker</h1>
-
-<form method="post">
-  {% csrf_token %} {{ form | crispy }}
-  <button type="submit">Add Anime</button>
+{% extends 'base.html' %} {% block content %}
+<h1>{% if update %}Update Tracking{% else %}Add new anime to WatchTracker{% endif %}</h1>
+<br />
+<form method="post" style="margin:auto">
+  {% csrf_token %} {% for field in form %}
+  <label class="form-label fs-3" for="{{ field.auto_id }}">{{ field.label }}:</label>
+  {{ field }} {% endfor %}
+  <button type="submit" class="btn btn-success btn-lg px-4 gap-3 mt-3 text-white">
+    {% if update %}Update this Tracking{% else %}Start Tracking this Anime{% endif %}
+  </button>
 </form>
 {% endblock %}

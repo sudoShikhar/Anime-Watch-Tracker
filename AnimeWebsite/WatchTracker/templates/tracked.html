@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="d-grid gap-2 pt-5">
+  {% if anime %}
+  <h1>Anime currently Tracking...</h1>
+  {% else %}
+  <h1>You are currently not tracking any Anime. Add one now!</h1>
+  {% endif %}
+  <a href="{% url 'Add new Anime' %}" type="button" class="btn btn-success btn-lg px-4 gap-3 m-auto">Track new Anime!</a>
+</div>
+
+{% for ani in anime %}
+<div class="container my-5">
+  <div class="p-5 text-center bg-body-tertiary rounded-3">
+    <img class="d-block mx-auto mb-4" src="{% static 'home.jpeg' %}" alt="" width="25%" />
+
+    <h1 class="text-body-emphasis">{{ani.title}}</h1>
+    <p class="col-lg-8 mx-auto fs-5 text-muted">{{ani.description}}</p>
+    <div
+      class="progress mb-2"
+      role="progressbar"
+      aria-label="Default striped example"
+      aria-valuenow="10"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    >
+      <div class="progress-bar progress-bar-animated progress-bar-striped" style="width: {{ ani.watched_count_percentage }}%"></div>
+    </div>
+
+    <p class="col-lg-8 mx-auto fs-5 text-muted">{{ani.watched_count}}</p>
+    <div class="d-inline-flex gap-2 mb-5">
+      <a href="{% url 'Update Anime' tracking_id=ani.id %}" class="btn btn-success btn-lg px-4 rounded-pill" type="button">
+        Refresh Track Status
+      </a>
+      <a href="{% url 'Delete Anime' tracking_id=ani.id %}" class="btn btn-danger btn-lg px-4 rounded-pill" type="button">
+        Delete this tracking!
+      </a>
+    </div>
+  </div>
+</div>
+{% endfor %} {% endblock %}

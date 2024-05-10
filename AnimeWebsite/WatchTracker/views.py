@@ -2,23 +2,22 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
-# from django.contrib.auth.forms import UserCreationForm as RegistrationForm
+
 from .forms import RegistrationForm, AddAnimeForm
 from .models import AnimeTrack
 
 
-@login_required(login_url="/watchTracker/login")
 def home(request):
-    if request.method == "POST":
-        anime_id = request.POST.get("delete-post-id")
-        anime = AnimeTrack.objects.get(id=anime_id)
-        anime.delete()
-    anime = AnimeTrack.objects.filter(user=request.user)
-    return render(request, "home.html", {"anime": anime})
+    return render(request, "homepage.html", {"user_authenticated": request.user.is_authenticated})
 
+@login_required
+def get_tracked_anime(request):
+    anime = AnimeTrack.objects.filter(user=request.user).all()
+    return render(request, "tracked.html", {"anime": anime})
 
-@login_required(login_url="/watchTracker/login")
+@login_required
 def add_anime(request):
     if request.method == "POST":
         form = AddAnimeForm(request.POST)
@@ -26,10 +25,26 @@ def add_anime(request):
             anime_add = form.save(commit=False)
             anime_add.user = request.user
             anime_add.save()
-            return redirect("/watchTracker")
+            return redirect(reverse("Get Tracked Anime"))
     else:
         return render(request, "add_anime.html", {"form": AddAnimeForm()})
 
+@login_required
+def update_anime(request, tracking_id):
+    if request.method == "POST":
+        form = AddAnimeForm(request.POST)
+        if form.is_valid():
+            AnimeTrack.objects.filter(id=tracking_id).update(**form.cleaned_data)
+            return redirect(reverse("Get Tracked Anime"))
+
+    anime = AnimeTrack.objects.get(id=tracking_id)
+    return render(request, "add_anime.html", {"form": AddAnimeForm(vars(anime)), "update": True})
+
+@login_required
+def delete_anime(request, tracking_id):
+    anime = AnimeTrack.objects.filter(user=request.user, id=tracking_id)
+    anime.delete()
+    return redirect(reverse("Get Tracked Anime"))
 
 def sign_up(request):
     if request.method == "POST":
@@ -37,10 +52,10 @@ def sign_up(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("/watchTracker")
+            return redirect(reverse("WatchTracker Home"))
         else:
             print("Invalid form")
-            return redirect("/watchTracker/sign-up")
+            return redirect(reverse("Sign Up"))
     else:
         return render(
             request, "registration/sign_up.html", {"form": RegistrationForm()}

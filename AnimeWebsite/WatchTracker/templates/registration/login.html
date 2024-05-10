@@ -1,12 +1,11 @@
-{% extends 'base.html' %} 
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <h1>Login</h1>
-
-<form method="post">
-  {% csrf_token %} {{ form }}
-  <p>
-    Don't have an account? Sign up <a href="/watchTracker/sign-up">Here</a>!!!
-  </p>
-  <button type="submit">Log In</button>
+<br />
+<form method="post" style="margin:auto">
+  {% csrf_token %} {% for field in form %}
+  <label class="form-label fs-3" for="{{ field.auto_id }}">{{ field.label }}:</label>
+  {{ field }} {% endfor %}
+  <p class="form-text">Don't have an account? Sign up <a href="{% url 'Sign Up' %}">Here</a>!!!</p>
+  <button type="submit" class="btn btn-success btn-lg px-4 gap-3 mb-5 text-white">Log In</button>
 </form>
 {% endblock %}

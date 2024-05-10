@@ -1,4 +1,3 @@
-{% extends 'base.html' %}
 {% block content %}
 <h1>WatchTracker Home</h1>
 {% if user.is_authenticated %}
@@ -7,13 +6,10 @@
 <p>{{ ani }}</p>
 <form method="post">
   {% csrf_token %}
-  <button type="submit" name="delete-post-id" value="{{ani.id}}">
-    Delete tracking.
-  </button>
+  <button type="submit" name="delete-post-id" value="{{ani.id}}">Delete tracking.</button>
 </form>
 {% empty %}
 <p>Not tracking any anime for now.</p>
 {% endfor %} {% else %}
 <p>Not logged in as any user.</p>
-{% endif %} 
-{% endblock %}
+{% endif %} {% endblock %}

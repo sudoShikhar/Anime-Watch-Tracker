@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="px-4 my-5 text-center">
+  <img class="d-block mx-auto mb-4" src="{% static 'home.jpeg' %}" alt="" width="25%" />
+  <h1 class="display-5 fw-bold text-body-emphasis">Anime Watch Tracker App</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">
+      This app is built by <a href="https://www.linkedin.com/in/shikharrai/" class="text-decoration-none" target="_blank">Shikhar</a>.<br />
+      Free forever!<br />
+      Check source code on
+      <a href="https://github.com/kakashi215/Anime-Watch-Tracker" class="text-decoration-none" target="_blank">Github</a>.<br />
+      Check other projects on
+      <a href="https://kakashi215.github.io/#projects" class="text-decoration-none" target="_blank">Portfolio</a>.
+    </p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a href="{% url 'Add new Anime' %}" type="button" class="btn btn-success btn-lg px-4 gap-3">Track new Anime!</a>
+      {% if user_authenticated %}
+      <a href="{% url 'Get Tracked Anime' %}" type="button" class="btn btn-success btn-lg px-4 gap-3">Check Tracked Anime!</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
