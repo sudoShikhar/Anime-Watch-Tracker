@@ -9,7 +9,7 @@ make forms like this: https://getbootstrap.com/docs/5.3/examples/sign-in/
 https://www.youtube.com/watch?v=WuyKxdLcw3w
 
 1. VENV Commands
-   Created: python -m venv awt-venv
+   Created: python -m venv venv
    Activate: .\awt-venv\Scripts\activate
    Deactivate: deactivate
 
