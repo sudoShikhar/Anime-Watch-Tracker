@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.conf import settings
 
 
 from .forms import RegistrationForm, AddAnimeForm
@@ -10,7 +11,11 @@ from .models import AnimeTrack
 
 
 def home(request):
-    return render(request, "homepage.html", {"user_authenticated": request.user.is_authenticated})
+    print(settings.DEPLOYMENT_URLS)
+    return render(request, "homepage.html", {
+        "user_authenticated": request.user.is_authenticated, 
+        **settings.DEPLOYMENT_URLS
+    })
 
 @login_required
 def get_tracked_anime(request):

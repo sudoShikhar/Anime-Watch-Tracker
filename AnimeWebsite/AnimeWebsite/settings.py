@@ -1,4 +1,5 @@
 import os
+import requests
 
 """
 Django settings for AnimeWebsite project.
@@ -127,3 +128,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_URL = "WatchTracker Login"
 LOGIN_REDIRECT_URL = LOGOUT_REDIRECT_URL = "WatchTracker Home"
+
+DEPLOYMENT_URLS = requests.get('https://raw.githubusercontent.com/sudoShikhar/sudoShikhar.github.io/refs/heads/master/assets/links.json').json()
