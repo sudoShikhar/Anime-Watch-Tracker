@@ -11,7 +11,6 @@ from .models import AnimeTrack
 
 
 def home(request):
-    print(settings.DEPLOYMENT_URLS)
     return render(request, "homepage.html", {
         "user_authenticated": request.user.is_authenticated, 
         **settings.DEPLOYMENT_URLS
