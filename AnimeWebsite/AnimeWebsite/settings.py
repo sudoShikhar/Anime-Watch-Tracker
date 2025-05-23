@@ -28,7 +28,10 @@ SECRET_KEY = "django-insecure-zs(i)u)-$_nk-a8*j_8#&hv=my5$355urs2s4pi8#5df)85r0)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'ShikharAnimeWatchTracker.pythonanywhere.com'
+]
 
 
 # Application definition
