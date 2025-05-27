@@ -1,37 +1,75 @@
-# Anime-Watch-Tracker
+# Anime Watch Tracker
 
-perfect help: https://www.youtube.com/watch?v=WuyKxdLcw3w
-login form etc customization: https://stackoverflow.com/a/55369752
-make forms like this: https://getbootstrap.com/docs/5.3/examples/sign-in/
+A Django web app to track your anime watching progress. Users can register, log in, add anime to their watchlist, update progress, and remove tracked anime.
 
-# FORM BEAUTIFICATION
+## Features
 
-https://www.youtube.com/watch?v=WuyKxdLcw3w
+- User registration and authentication
+- Add, update, and delete anime tracking entries
+- Progress bar for watched episodes
+- Responsive UI with Bootstrap
 
-1. VENV Commands
-   Created: python -m venv venv
-   Activate: .\awt-venv\Scripts\activate
-   Deactivate: deactivate
+## Setup Instructions
 
-<!-- 2. Add navbar -->
+### 1. Clone the repository
 
-2. FETCH ANIME INFO FROM NET along with EPISODE INFO
-   https://anilist.gitbook.io/anilist-apiv2-docs/overview/resources-and-recommended-reading
-   PARTIAL EPISODE TRACKING
-3. Login page
-   if already logged in redirect to home (https://www.delftstack.com/howto/django/django-check-logged-in-user/#:~:text=Check%20the%20Logged%20in%20User%20in%20Views%20in%20Django,-In%20views%2C%20we&text=We%20can%20use%20request.,in%2C%20it%20will%20return%20True%20.)
-   <!-- dont have account? sign up (with link) -->
+```sh
+git clone https://github.com/yourusername/Anime-Watch-Tracker.git
+cd Anime-Watch-Tracker
+```
 
-4. Signup page
-   if already logged in redirect to home (https://www.delftstack.com/howto/django/django-check-logged-in-user/#:~:text=Check%20the%20Logged%20in%20User%20in%20Views%20in%20Django,-In%20views%2C%20we&text=We%20can%20use%20request.,in%2C%20it%20will%20return%20True%20.)
-   <!-- already have account? login (with link) -->
-   it should prompt on page with errors
+### 2. Create and activate a virtual environment
 
-<!-- 5. logout page -->
-   <!-- redirects to login page. -->
+```sh
+python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On Unix/macOS:
+source venv/bin/activate
+```
 
-user gg
-pass J^aU+b@#jZ6S!mF
+### 3. Install dependencies
 
-python manage.py createsuperuser --username=admin --email=admin@example.com
-pass admin
+```sh
+pip install -r requirements.txt
+```
+
+### 4. Apply migrations
+
+```sh
+python AnimeWebsite/manage.py migrate
+```
+
+### 5. Create a superuser (optional, for admin access)
+
+```sh
+python AnimeWebsite/manage.py createsuperuser
+```
+
+### 6. Run the development server
+
+```sh
+python AnimeWebsite/manage.py runserver
+```
+
+Visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser.
+
+## Useful Links
+
+- [Bootstrap Forms Example](https://getbootstrap.com/docs/5.3/examples/sign-in/)
+- [Django Authentication Customization](https://stackoverflow.com/a/55369752)
+- [Django User Authentication Docs](https://docs.djangoproject.com/en/4.1/topics/auth/default/)
+
+## Notes
+
+- To deactivate the virtual environment, run `deactivate`.
+- The database file `db.sqlite3` is ignored by git.
+- For deployment, update `ALLOWED_HOSTS` and set `DEBUG = False` in `AnimeWebsite/settings.py`.
+
+---
+
+### Developer
+
+- Built by [Shikhar](https://www.linkedin.com/in/shikhar-sharma-1b9a7b1b2/)
+- [Project Showcase](https://sudoShikhar.github.io/)
+- [Source Code on GitHub](https://github.com/sudoShikhar/Anime-Watch-Tracker)
